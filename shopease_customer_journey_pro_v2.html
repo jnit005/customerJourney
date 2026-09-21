@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopEase | Customer Journey Demo</title>
+<style>
+:root{--ink:#172033;--muted:#647087;--line:#e5eaf1;--bg:#f5f7fb;--brand:#315be8;--brand2:#203fc0;--soft:#edf2ff;--white:#fff;--green:#16835f;--shadow:0 12px 34px rgba(27,43,79,.09)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{max-width:1240px;height:76px;margin:auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;gap:22px}.logo{font-size:25px;font-weight:850;letter-spacing:-1px}.logo span{color:var(--brand)}.navlinks{display:flex;align-items:center;gap:8px}.navlinks button{border:0;background:transparent;color:#526078;padding:11px 15px;border-radius:10px;font-weight:650}.navlinks button.active,.navlinks button:hover{background:var(--soft);color:var(--brand)}.nav-actions{display:flex;gap:10px;align-items:center}.cart-btn,.primary{border:0;border-radius:11px;background:var(--brand);color:white;padding:12px 17px;font-weight:750;box-shadow:0 5px 14px #315be82b}.cart-btn:hover,.primary:hover{background:var(--brand2)}.secondary{border:1px solid #d8dfeb;border-radius:11px;background:white;color:var(--ink);padding:11px 16px;font-weight:700}.wrap{max-width:1240px;margin:auto;padding:36px 24px 130px}.eyebrow{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:800;color:var(--brand)}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(32px,4vw,52px);letter-spacing:-1.8px;line-height:1.07;margin:14px 0 18px}h2{font-size:27px;letter-spacing:-.7px;margin-bottom:8px}.lead{font-size:17px;line-height:1.75;color:var(--muted);max-width:660px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;padding:54px;background:linear-gradient(120deg,#eef3ff,#f8faff 65%,#e9efff);border:1px solid #dfe7ff;border-radius:26px;overflow:hidden}.hero-visual{min-height:260px;border-radius:22px;background:linear-gradient(145deg,#294bd3,#7794ff);display:flex;align-items:center;justify-content:center;position:relative;color:white;padding:25px}.hero-visual .orb{position:absolute;width:210px;height:210px;border-radius:50%;background:#ffffff24;right:20px;top:10px}.hero-visual .mock{position:relative;background:#fff;color:var(--ink);width:min(290px,100%);padding:22px;border-radius:18px;box-shadow:0 20px 45px #162c8a55;transform:rotate(-3deg)}.mock-line{height:9px;border-radius:8px;background:#e9edf5;margin:12px 0}.mock-chip{display:inline-block;background:#eef2ff;color:#315be8;padding:6px 9px;border-radius:7px;font-size:11px;font-weight:800}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.trust-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:25px;color:#68758b;font-size:13px;font-weight:650}.trust-row span:before{content:"✓";color:var(--green);font-weight:900;margin-right:7px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:42px 0 18px}.section-head p{color:var(--muted);margin:5px 0 0}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}.product{background:white;border:1px solid var(--line);border-radius:17px;padding:15px;transition:.2s;min-width:0}.product:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.product-art{height:158px;border-radius:12px;background:linear-gradient(135deg,#f0f3f9,#e7ecf5);display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:15px}.product-art img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s}.product:hover .product-art img{transform:scale(1.045)}.product h3{font-size:16px;margin:7px 0}.product p{font-size:13px;line-height:1.55;color:var(--muted);min-height:40px;margin-bottom:12px}.price{font-size:20px;font-weight:850;margin:10px 0 14px}.card-bottom{display:flex;justify-content:space-between;align-items:center;gap:8px}.small-btn{border:0;background:var(--soft);color:var(--brand);font-weight:800;border-radius:9px;padding:10px 12px}.badge{display:inline-flex;background:#e8f7f1;color:#167353;border-radius:20px;padding:5px 9px;font-size:11px;font-weight:800}.banner{margin-top:36px;background:#17233d;color:white;border-radius:20px;padding:30px 34px;display:flex;align-items:center;justify-content:space-between;gap:20px}.banner p{color:#c6cede;margin:7px 0 0}.banner h2{margin:0}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.filter{border:1px solid #dce2ec;background:white;padding:9px 14px;border-radius:30px;color:#59657b;font-weight:700}.filter.active{background:var(--brand);border-color:var(--brand);color:white}.search{width:min(340px,100%);padding:12px 14px;border:1px solid #dce2ec;border-radius:11px;background:white;outline:none}.search:focus,input:focus{border-color:var(--brand);box-shadow:0 0 0 3px #315be81c}.detail-layout{display:grid;grid-template-columns:1fr 1fr;gap:34px;background:white;border:1px solid var(--line);padding:30px;border-radius:22px}.detail-art{min-height:400px;background:linear-gradient(145deg,#edf1f8,#e4eafa);border-radius:17px;display:flex;align-items:center;justify-content:center;overflow:hidden}.detail-art img{width:100%;height:100%;min-height:400px;object-fit:cover;display:block}.detail-copy{padding:10px 4px}.detail-copy h1{font-size:39px}.detail-copy .price{font-size:30px}.features{padding-left:20px;line-height:2;color:#536078}.quantity{display:flex;align-items:center;gap:12px;margin:18px 0}.quantity button{width:34px;height:34px;border:1px solid var(--line);background:white;border-radius:8px;font-weight:800}.cart-layout{display:grid;grid-template-columns:1.5fr .8fr;gap:24px}.panel{background:white;border:1px solid var(--line);border-radius:17px;padding:23px}.cart-row{display:grid;grid-template-columns:76px 1fr auto;gap:15px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line)}.cart-row:last-child{border-bottom:0}.mini-art{height:70px;width:70px;border-radius:12px;background:#edf1f8;display:grid;place-items:center;overflow:hidden}.mini-art img{width:100%;height:100%;object-fit:cover}.cart-row h3{font-size:15px;margin:0 0 6px}.cart-row p{font-size:13px;color:var(--muted);margin:0}.remove{border:0;background:none;color:#ba4353;font-size:12px;font-weight:750;margin-top:6px}.summary-line{display:flex;justify-content:space-between;gap:12px;margin:15px 0;color:#5d687d}.summary-line.total{border-top:1px solid var(--line);padding-top:17px;color:var(--ink);font-size:20px;font-weight:850}.field{margin:13px 0}.field label{display:block;font-size:12px;font-weight:800;margin-bottom:7px;color:#4e5b72}.field input{width:100%;padding:12px;border:1px solid #dce2ec;border-radius:10px;outline:none}.notice{font-size:12px;line-height:1.5;color:#78849a;margin-top:12px}.empty{padding:55px 20px;text-align:center}.empty .emoji{font-size:52px;margin-bottom:15px}.empty p{color:var(--muted)}.chat{position:fixed;right:22px;bottom:20px;width:370px;max-width:calc(100vw - 24px);z-index:40;background:white;border:1px solid #dce2ec;border-radius:18px;overflow:hidden;box-shadow:0 18px 55px #1423452b}.chat-head{background:#17233d;color:white;padding:15px 17px;display:flex;justify-content:space-between;align-items:center}.chat-brand{display:flex;align-items:center;gap:10px}.bot-avatar{width:35px;height:35px;border-radius:11px;background:#4268ee;display:grid;place-items:center;font-size:18px}.chat-head strong{display:block;font-size:14px}.chat-head small{display:block;color:#c4cde0;font-size:11px;margin-top:3px}.chat-toggle{border:0;background:#ffffff20;color:white;border-radius:8px;width:30px;height:30px;font-size:18px}.chat-body{height:285px;overflow:auto;padding:14px;background:#f7f9fc;scroll-behavior:smooth}.message{max-width:91%;padding:10px 12px;border-radius:12px;margin:8px 0;font-size:12px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}.message.bot{background:white;border:1px solid #e4e9f1;color:#344057}.message.user{background:var(--brand);color:white;margin-left:auto}.chat-meta{padding:8px 13px 0;font-size:10px;color:#8490a3;background:#f7f9fc}.quick{display:flex;gap:7px;flex-wrap:wrap;padding:10px 11px;background:white;border-top:1px solid #edf0f5;max-height:110px;overflow:auto}.quick button{white-space:normal;text-align:left;line-height:1.25}.quick button{border:1px solid #dce3f0;background:#fff;border-radius:20px;padding:7px 9px;font-size:10px;font-weight:750;color:#40516f}.quick button:hover{border-color:var(--brand);color:var(--brand)}.chat-input{display:flex;border-top:1px solid #e9edf3;background:white}.chat-input input{min-width:0;flex:1;border:0;padding:14px;outline:none;font-size:12px}.chat-input button{border:0;background:var(--brand);color:white;padding:0 17px;font-weight:800}.chat.collapsed .chat-body,.chat.collapsed .quick,.chat.collapsed .chat-input,.chat.collapsed .chat-meta{display:none}.footer{padding:30px 0 0;color:#8a95a8;font-size:12px;text-align:center}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#17233d;color:white;padding:12px 18px;border-radius:10px;z-index:80;box-shadow:var(--shadow);font-size:13px}
+@media(max-width:950px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:34px;grid-template-columns:1fr  .8fr}.detail-layout{gap:20px}.wrap{padding-left:18px;padding-right:18px}}
+@media(max-width:680px){.nav{height:auto;min-height:68px;padding:12px 14px;flex-wrap:wrap}.logo{font-size:22px}.navlinks{order:3;width:100%;justify-content:space-between;gap:2px}.navlinks button{padding:8px 10px;font-size:12px}.nav-actions{margin-left:auto}.cart-btn{padding:10px 12px;font-size:12px}.wrap{padding:22px 14px 125px}.hero{display:block;padding:27px 22px;border-radius:19px}.hero-visual{margin-top:25px;min-height:230px}.lead{font-size:15px}.section-head{align-items:start;flex-direction:column;margin-top:32px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product{padding:10px;border-radius:13px}.product-art{height:112px;font-size:48px}.product h3{font-size:14px}.product p{font-size:12px;min-height:55px}.price{font-size:17px}.small-btn{padding:9px;font-size:11px}.detail-layout,.cart-layout{grid-template-columns:1fr;padding:16px;gap:18px}.detail-art{min-height:230px;font-size:95px}.detail-copy h1{font-size:31px}.banner{padding:24px;align-items:flex-start;flex-direction:column}.chat{right:9px;bottom:9px;width:350px;max-width:calc(100vw - 18px)}.chat-body{height:230px}.cart-row{grid-template-columns:55px 1fr auto;gap:9px}.mini-art{width:54px;height:54px;font-size:27px}.cart-row h3{font-size:13px}.cart-row p{font-size:12px}}
+</style>
+</head>
+<body>
+<header><div class="nav">
+  <div class="logo">Shop<span>Ease</span></div>
+  <nav class="navlinks" aria-label="Main navigation">
+    <button id="nav-home" onclick="navigate('home')">Home</button>
+    <button id="nav-shop" onclick="navigate('shop')">Shop</button>
+    <button id="nav-detail" onclick="navigate('detail')">Product Details</button>
+    <button id="nav-cart" onclick="navigate('cart')">Cart & Checkout</button>
+  </nav>
+  <div class="nav-actions"><button class="cart-btn" onclick="navigate('cart')">Cart <span id="cartCount">0</span></button></div>
+</div></header>
+<main class="wrap" id="app" aria-live="polite"></main>
+<div class="chat" id="chat">
+  <div class="chat-head">
+    <div class="chat-brand"><div class="bot-avatar">✦</div><div><strong>ShopEase Assistant</strong><small id="contextLabel">Page-aware shopping support</small></div></div>
+    <button class="chat-toggle" aria-label="Minimize chat" onclick="toggleChat()">−</button>
+  </div>
+  <div class="chat-body" id="messages"></div>
+  <div class="chat-meta" id="chatMeta">Answers are limited to information configured in this demo.</div>
+  <div class="quick" id="quick"></div>
+  <form class="chat-input" onsubmit="send(event)"><input id="chatInput" aria-label="Ask ShopEase" placeholder="Ask about this page..." autocomplete="off"><button type="submit">Send</button></form>
+</div>
+<script>
+"use strict";
+const products=[
+{id:"headphones",name:"Wireless Headphones",price:2999,icon:"🎧",category:"Audio",desc:"Comfortable wireless headphones for listening at home, work, or on the move.",features:["Active noise cancellation","Up to 30-hour battery life","USB-C charging"],details:"A wireless listening option with active noise cancellation and a long stated battery life."},
+{id:"watch",name:"Smart Watch",price:4499,icon:"⌚",category:"Wearables",desc:"A lightweight smart watch for fitness tracking, calls, and everyday use.",features:["Heart-rate tracking","Up to 7-day battery life","Water resistant"],details:"A wearable designed around everyday convenience and basic fitness features."},
+{id:"speaker",name:"Bluetooth Speaker",price:1999,icon:"🔊",category:"Audio",desc:"A compact portable speaker with clear sound and convenient playback.",features:["Up to 12-hour playback","Bluetooth 5.3","Portable design"],details:"A compact Bluetooth speaker intended for portable listening."},
+{id:"keyboard",name:"Mechanical Keyboard",price:3499,icon:"⌨️",category:"Accessories",desc:"A tactile keyboard for a more deliberate desktop typing experience.",features:["Mechanical key switches","Compact desktop layout","Wired USB connection"],details:"A desktop keyboard with mechanical switches and a wired connection."},
+{id:"mouse",name:"Ergonomic Wireless Mouse",price:1299,icon:"🖱️",category:"Accessories",desc:"A wireless mouse with a contoured shape for everyday computer use.",features:["Wireless connection","Contoured ergonomic shape","Adjustable sensitivity"],details:"A wireless pointing device with adjustable sensitivity."},
+{id:"backpack",name:"Everyday Backpack",price:1899,icon:"🎒",category:"Lifestyle",desc:"A versatile backpack for carrying daily essentials.",features:["Padded laptop compartment","Multiple organiser pockets","Adjustable shoulder straps"],details:"A general-purpose backpack with a padded laptop compartment."},
+{id:"bottle",name:"Insulated Water Bottle",price:799,icon:"🧴",category:"Lifestyle",desc:"A reusable bottle designed to help keep drinks at temperature.",features:["Double-wall insulation","Leak-resistant lid","Reusable design"],details:"A reusable insulated bottle. Specific temperature-retention duration is not provided in this demo."},
+{id:"lamp",name:"LED Desk Lamp",price:1599,icon:"💡",category:"Home",desc:"A desk lamp for focused lighting while reading or working.",features:["Adjustable lamp head","Multiple brightness levels","Touch controls"],details:"An adjustable LED desk lamp with touch controls."},
+{id:"camera",name:"1080p Webcam",price:2299,icon:"📷",category:"Accessories",desc:"A full-HD webcam for video calls and online meetings.",features:["1080p video","Built-in microphone","Plug-and-play USB"],details:"A USB webcam with 1080p video and an integrated microphone."},
+{id:"charger",name:"USB-C Fast Charger",price:999,icon:"🔌",category:"Accessories",desc:"A compact USB-C charger for compatible devices.",features:["USB-C output","Compact form factor","Over-current protection"],details:"A compact USB-C charger. Wattage and device-specific compatibility are not specified in this demo."}
+];
+let page="home",selectedId="headphones",cart={},categoryFilter="All",searchTerm="",chatCollapsed=false;
+
+const productPhotos={
+ headphones:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=85",
+ watch:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",
+ speaker:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=900&q=85",
+ keyboard:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=900&q=85",
+ mouse:"https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=900&q=85",
+ backpack:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",
+ bottle:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=900&q=85",
+ lamp:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=900&q=85",
+ camera:"https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=900&q=85",
+ charger:"https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=900&q=85"
+};
+
+const money=n=>"₹"+Number(n).toLocaleString("en-IN");
+const getProduct=id=>products.find(p=>p.id===id);
+const cartQty=()=>Object.values(cart).reduce((a,b)=>a+b,0);
+const cartTotal=()=>Object.entries(cart).reduce((s,[id,q])=>s+getProduct(id).price*q,0);
+function navigate(next,id){page=next;if(id)selectedId=id;render();setContext(true)}
+function changeQty(id,delta){cart[id]=Math.max(0,(cart[id]||0)+delta);if(!cart[id])delete cart[id];render();setContext(false)}
+function addToCart(id){cart[id]=(cart[id]||0)+1;render();setContext(false);toast(getProduct(id).name+" added to your cart.");}
+function toast(text){const t=document.createElement("div");t.className="toast";t.textContent=text;document.body.appendChild(t);setTimeout(()=>t.remove(),2200)}
+function productCard(p){return `<article class="product"><div class="product-art"><img src="${productPhotos[p.id]}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${p.icon}';"></div><span class="badge">${p.category}</span><h3>${p.name}</h3><p>${p.desc}</p><div class="card-bottom"><div class="price">${money(p.price)}</div><button class="small-btn" onclick="navigate('detail','${p.id}')">View item</button></div></article>`}
+function render(){
+ const app=document.getElementById("app");
+ if(page==="home"){
+ app.innerHTML=`<section class="hero"><div><div class="eyebrow">A more considered way to shop</div><h1>Useful finds.<br>Clear information.</h1><p class="lead">Explore everyday technology and lifestyle essentials in this interactive storefront demo. Browse products, review listed features, and ask the assistant questions as you move through the customer journey.</p><div class="hero-actions"><button class="primary" onclick="navigate('shop')">Explore the collection →</button><button class="secondary" onclick="askSuggested('What can I do on this website?')">Meet your shopping assistant</button></div><div class="trust-row"><span>Product details at a glance</span><span>Page-aware demo assistant</span><span>Interactive cart</span></div></div><div class="hero-visual"><div class="orb"></div><div class="mock"><span class="mock-chip">SHOP EASE PICKS</span><h3 style="margin:15px 0 4px">Find your everyday essential</h3><div class="mock-line" style="width:92%"></div><div class="mock-line" style="width:70%"></div><div style="display:flex;gap:8px;margin-top:18px"><div style="background:#eef2fa;border-radius:10px;padding:17px;font-size:32px">🎧</div><div style="background:#eef2fa;border-radius:10px;padding:17px;font-size:32px">⌚</div><div style="background:#eef2fa;border-radius:10px;padding:17px;font-size:32px">🎒</div></div><p style="font-size:11px;color:#778197;margin:14px 0 0">Explore products and ask questions along the way.</p></div></div></section>
+ <div class="section-head"><div><div class="eyebrow">A few places to start</div><h2>Popular in the collection</h2><p>Explore a selection from our ten demo products.</p></div><button class="secondary" onclick="navigate('shop')">View all products →</button></div><div class="grid">${products.slice(0,4).map(productCard).join("")}</div>
+ <section class="banner"><div><h2>Questions while you browse?</h2><p>The assistant updates its context when you switch pages or open a product.</p></div><button class="primary" onclick="askSuggested('What information can you confirm on this page?')">Ask the assistant</button></section>`;
+ }else if(page==="shop"){
+ const cats=["All",...new Set(products.map(p=>p.category))];
+ const shown=products.filter(p=>(categoryFilter==="All"||p.category===categoryFilter)&&(p.name+" "+p.desc+" "+p.category).toLowerCase().includes(searchTerm.toLowerCase()));
+ app.innerHTML=`<div class="eyebrow">The ShopEase collection</div><h1 style="font-size:42px">Shop all products</h1><p class="lead">Browse ten demo products across audio, wearables, accessories, lifestyle, and home. Product information below is the complete configured information available to this storefront.</p><div class="section-head"><div><h2>Explore the collection</h2><p>${shown.length} of ${products.length} products shown</p></div><input class="search" value="${escapeHtml(searchTerm)}" placeholder="Search products..." oninput="searchTerm=this.value;render();setContext(false)" aria-label="Search products"></div><div class="filters">${cats.map(c=>`<button class="filter ${categoryFilter===c?'active':''}" onclick="categoryFilter='${c}';render();setContext(false)">${c}</button>`).join("")}</div><div class="grid">${shown.length?shown.map(productCard).join(""):`<div class="panel" style="grid-column:1/-1">No products match that search. Try another term or choose All.</div>`}</div>`;
+ }else if(page==="detail"){
+ const p=getProduct(selectedId)||products[0];
+ app.innerHTML=`<button class="secondary" onclick="navigate('shop')" style="margin-bottom:22px">← Back to shop</button><div class="detail-layout"><div class="detail-art" aria-label="${p.name} product photo"><img src="${productPhotos[p.id]}" alt="${p.name}" onerror="this.style.display='none';this.parentElement.textContent='${p.icon}';"></div><div class="detail-copy"><span class="badge">${p.category}</span><div class="eyebrow" style="margin-top:18px">Product details</div><h1>${p.name}</h1><div class="price">${money(p.price)}</div><p class="lead" style="font-size:15px">${p.desc}</p><p style="line-height:1.7;color:#536078">${p.details}</p><h3 style="margin:22px 0 8px">Listed features</h3><ul class="features">${p.features.map(f=>`<li>${f}</li>`).join("")}</ul><div class="quantity"><button onclick="changeQty('${p.id}',-1)" aria-label="Decrease quantity">−</button><strong>${cart[p.id]||0} in cart</strong><button onclick="changeQty('${p.id}',1)" aria-label="Increase quantity">+</button></div><div class="hero-actions"><button class="primary" onclick="addToCart('${p.id}')">Add to cart · ${money(p.price)}</button><button class="secondary" onclick="navigate('cart')">Go to cart</button></div><p class="notice">This is a demonstration storefront. Availability, delivery dates, warranty, returns, and payment processing are not configured.</p></div></div><div class="section-head"><div><h2>You may also want to explore</h2><p>Other items from the ShopEase demo collection.</p></div><button class="secondary" onclick="navigate('shop')">All products</button></div><div class="grid">${products.filter(x=>x.id!==p.id).slice(0,4).map(productCard).join("")}</div>`;
+ }else{
+ const entries=Object.entries(cart);
+ app.innerHTML=`<div class="eyebrow">Your shopping journey</div><h1 style="font-size:42px">Cart & checkout</h1><p class="lead">Review quantities and the item subtotal. This demo does not submit orders or process payments.</p>${entries.length?`<div class="cart-layout"><section class="panel"><div class="section-head" style="margin:0 0 10px"><div><h2>Your cart</h2><p>${cartQty()} item(s)</p></div><button class="secondary" onclick="navigate('shop')">Continue shopping</button></div>${entries.map(([id,q])=>{const p=getProduct(id);return `<div class="cart-row"><div class="mini-art"><img src="${productPhotos[p.id]}" alt="${p.name}" loading="lazy" onerror="this.style.display='none';this.parentElement.textContent='${p.icon}';"></div><div><h3>${p.name}</h3><p>${money(p.price)} each</p><button class="remove" onclick="changeQty('${id}',-${q})">Remove</button></div><div style="text-align:right"><strong>${money(p.price*q)}</strong><div class="quantity" style="justify-content:flex-end;margin:8px 0 0"><button onclick="changeQty('${id}',-1)">−</button><strong>${q}</strong><button onclick="changeQty('${id}',1)">+</button></div></div></div>`}).join("")}</section><aside><div class="panel"><h2>Order summary</h2><div class="summary-line"><span>Items (${cartQty()})</span><strong>${money(cartTotal())}</strong></div><div class="summary-line"><span>Shipping</span><span>Not calculated</span></div><div class="summary-line total"><span>Item subtotal</span><span>${money(cartTotal())}</span></div><p class="notice">Taxes, shipping charges, discounts, and final payable amount are not configured in this demo.</p><button class="primary" style="width:100%;margin-top:12px" onclick="document.getElementById('checkoutForm').scrollIntoView({behavior:'smooth'})">Continue to demo checkout</button></div><form class="panel" id="checkoutForm" onsubmit="demoCheckout(event)" style="margin-top:18px"><h2>Demo checkout</h2><p class="notice">Fields are illustrative only. Do not enter real personal or payment information.</p><div class="field"><label for="demoName">Name (demo)</label><input id="demoName" placeholder="Example name" required></div><div class="field"><label for="demoAddress">Address (demo)</label><input id="demoAddress" placeholder="Example address" required></div><div class="field"><label for="demoPin">PIN code (demo)</label><input id="demoPin" inputmode="numeric" placeholder="000000" pattern="[0-9]{6}" required></div><button class="primary" type="submit" style="width:100%">Run demo confirmation</button></form></aside></div>`:`<div class="panel empty"><div class="emoji">🛍️</div><h2>Your cart is waiting</h2><p>There are no items in your cart yet. Browse the collection to add a product.</p><button class="primary" onclick="navigate('shop')">Browse products</button></div>`}`;
+ }
+ ["home","shop","detail","cart"].forEach(k=>document.getElementById("nav-"+k).classList.toggle("active",page===k));
+ document.getElementById("cartCount").textContent=cartQty();
+}
+function demoCheckout(e){e.preventDefault();toast("Demo only: no order was submitted and no information was sent.");}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function currentContext(){if(page==="detail")return {name:"Product Details — "+getProduct(selectedId).name,topic:"detail"};return {name:({home:"Home",shop:"Shop",cart:"Cart & Checkout"})[page],topic:page};}
+const questions={
+home:[
+["What is ShopEase?","ShopEase is a demonstration storefront for exploring products and testing page-aware customer support."],
+["What can I do on this website?","You can browse the collection, open product detail pages, add items to your cart, adjust quantities, and try the demo checkout."],
+["How many products are available?","The demo collection contains 10 products."],
+["Where can I see all products?","Choose Shop in the navigation or select Explore the collection."],
+["How do I view product details?","Select View item on a product card to open its detail page."],
+["How do I add an item to my cart?","Open a product detail page and select Add to cart. You can also adjust its quantity there."],
+["Where is my cart?","Choose Cart & Checkout in the navigation or use the Cart button in the header."],
+["Can I ask questions while browsing?","Yes. Use the ShopEase Assistant at the bottom-right. Its page label changes as you navigate."],
+["Does the assistant know which page I am on?","Yes. This demo updates the assistant's context when the page changes and when a product is opened."],
+["Can I search the products?","Yes. Open Shop and use the product search field."],
+["Can I filter products?","Yes. On Shop, select a category filter such as Audio, Home, or Accessories."],
+["What categories are in the store?","The configured categories are Audio, Wearables, Accessories, Lifestyle, and Home."],
+["Are these real products for sale?","This is a demo storefront. It does not provide a real purchasing or fulfilment service."],
+["Can I place a real order?","No. Checkout is illustrative only; the demo does not submit orders or process payments."],
+["Can I get delivery dates here?","Delivery estimates are not configured, so I cannot provide a delivery date."],
+["Can I see shipping charges?","Shipping charges are not configured in this demo."],
+["Can I see return or warranty policies?","Return and warranty policies are not configured in this demo."],
+["Does this site save my account details?","This demo has no account registration or customer account system."],
+["What information does the assistant use?","It uses the page currently open and the product, cart, and demo information explicitly configured in this HTML."],
+["What if you don't know an answer?","I should say when the required information is not configured rather than guess. You can ask about listed products, features, prices, navigation, and cart actions."]
+],
+shop:[
+["How many products are listed?","There are 10 products in the configured collection."],
+["What categories can I filter by?","Audio, Wearables, Accessories, Lifestyle, and Home, as well as All."],
+["Which product is cheapest?","The Insulated Water Bottle is listed at ₹799, the lowest price among the ten configured products."],
+["Which product is most expensive?","The Smart Watch is listed at ₹4,499, the highest price among the ten configured products."],
+["What audio products are available?","Wireless Headphones (₹2,999) and Bluetooth Speaker (₹1,999)."],
+["What wearable is available?","The Smart Watch is listed at ₹4,499."],
+["What accessories are available?","Mechanical Keyboard (₹3,499), Ergonomic Wireless Mouse (₹1,299), 1080p Webcam (₹2,299), and USB-C Fast Charger (₹999)."],
+["What lifestyle products are available?","Everyday Backpack (₹1,899) and Insulated Water Bottle (₹799)."],
+["What home product is available?","The LED Desk Lamp is listed at ₹1,599."],
+["Which product has noise cancellation?","The Wireless Headphones list active noise cancellation as a feature."],
+["Which product has heart-rate tracking?","The Smart Watch lists heart-rate tracking."],
+["Which product supports Bluetooth 5.3?","The Bluetooth Speaker lists Bluetooth 5.3."],
+["Which product has a padded laptop compartment?","The Everyday Backpack lists a padded laptop compartment."],
+["Which product is a webcam?","The 1080p Webcam is listed at ₹2,299 and includes 1080p video, a built-in microphone, and plug-and-play USB."],
+["Which products use USB-C?","The Wireless Headphones list USB-C charging. The USB-C Fast Charger lists USB-C output."],
+["Can I compare product features?","Yes. Open individual product pages to review their configured descriptions and features. I can also state the listed differences, but the demo does not provide independent product testing."],
+["Are prices inclusive of taxes?","Tax treatment is not specified in this demo, so I cannot confirm whether taxes are included."],
+["Are products in stock?","Inventory and live stock status are not configured."],
+["Can I sort by price?","Price sorting is not implemented. You can search by product name or filter by category."],
+["How do I add a product?","Select View item on its card, then use Add to cart on the detail page."]
+],
+detail:[
+["What product am I viewing?","You are viewing "+getProduct(selectedId).name+"."],
+["What is its price?","The listed price for "+getProduct(selectedId).name+" is "+money(getProduct(selectedId).price)+"."],
+["What are its features?","The listed features are: "+getProduct(selectedId).features.join("; ")+". "],
+["What is the product description?"," "+getProduct(selectedId).desc],
+["What category is it in?"," "+getProduct(selectedId).name+" is in the "+getProduct(selectedId).category+" category."],
+["How do I add it to my cart?","Select the Add to cart button. The cart count will update."],
+["Can I change the quantity?","Yes. Use the plus and minus controls on this product page, or adjust the quantity in Cart & Checkout."],
+["Can I see other products?","Select Back to shop or scroll to the related products section."],
+["Is it in stock?","Live inventory is not configured, so I cannot confirm stock availability."],
+["When will it arrive?","Delivery dates and shipping estimates are not configured."],
+["What is the warranty?","Warranty information is not configured for this demo product."],
+["Can I return it?","Return and refund policies are not configured in this demo."],
+["Are there customer reviews?","Customer ratings and reviews are not included in the configured product data."],
+["Is the price discounted?","Discount and promotion data are not configured. The page shows the configured demo price."],
+["Is tax included in the price?","Tax treatment is not specified, so I cannot confirm whether tax is included."],
+["What materials is it made from?","Material specifications are not provided in the configured product information."],
+["Is it compatible with my device?","Device-specific compatibility information is not configured. I would need verified compatibility details to answer reliably."],
+["Can you guarantee the advertised performance?","I can repeat the features listed in this demo, but no independent testing or performance guarantee is configured."],
+["Does this page process payment?","No. This is a product-information demo; payment processing is not implemented."],
+["Can you recommend an alternative?","I can show other products in the collection, but the demo has no personalised recommendation rules. Select Back to shop to browse the available options."]
+],
+cart:[
+["How many items are in my cart?","Your cart currently contains "+cartQty()+" item(s)."],
+["What is my cart total?","The subtotal of the items currently in your cart is "+money(cartTotal())+". Shipping and taxes are not calculated."],
+["What is included in the subtotal?","The subtotal is the sum of each configured product price multiplied by its quantity."],
+["How do I change a quantity?","Use the plus and minus buttons next to a cart item."],
+["How do I remove an item?","Select Remove beneath the product name. You can also reduce its quantity to zero with the minus button."],
+["How do I continue shopping?","Select Continue shopping or choose Shop in the navigation."],
+["Can I checkout?","You can try the illustrative demo checkout form. It does not create a real order."],
+["Will my order be submitted?","No. The demo checkout only displays a confirmation message; it does not submit an order."],
+["Can I pay online?","No payment gateway is configured in this demo."],
+["What payment methods are accepted?","Payment methods are not configured, so I cannot list accepted methods."],
+["How much is shipping?","Shipping costs are not configured. The displayed subtotal excludes shipping."],
+["Are taxes included?","Tax calculation is not configured, so the subtotal should not be treated as a final payable amount."],
+["Can I apply a coupon?","Coupon and discount functionality is not implemented."],
+["Can I enter my address?","The demo form contains illustrative address fields, but you should not enter real personal information."],
+["Why does the form ask for a PIN code?","It is a sample checkout field for demonstrating the page flow; no address validation or delivery service is connected."],
+["Is my personal information stored?","This static demo has no backend submission. The form does not send the entered values to a server."],
+["Can I track my order?","Order creation and tracking are not implemented in this demo."],
+["Can I cancel an order?","No real order is created, and cancellation functionality is not configured."],
+["What happens when I select the demo confirmation button?","The page displays a demo-only message. No purchase is made and no information is sent."],
+["Why is the final amount unavailable?","Shipping, taxes, discounts, and payment processing are not configured. Only the item subtotal can be calculated."]
+]};
+function normalize(s){return s.toLowerCase().replace(/[’']/g,"").replace(/[^a-z0-9₹ ]/g," ").replace(/\s+/g," ").trim()}
+function normalize(s){return String(s).toLowerCase().replace(/[^a-z0-9₹ ]/g," ").replace(/\s+/g," ").trim();}
+function scoreQuestion(q,phrase){
+ const a=normalize(q), b=normalize(phrase);
+ if(a===b)return 100;
+ const aw=new Set(a.split(" ").filter(w=>w.length>2)), bw=b.split(" ").filter(w=>w.length>2);
+ if(!bw.length)return 0;
+ return (bw.filter(w=>aw.has(w)).length/bw.length)*100;
+}
+
+const supplementalQuestions={
+home:[
+["Is ShopEase a real online store?","No. ShopEase is a demonstration storefront used to explore a sample shopping journey."],
+["Do the products have verified reviews?","Customer reviews and ratings are not configured in this demo."],
+["Can I compare products?","You can open products in the catalog and review their listed descriptions, prices, and features. A dedicated side-by-side comparison tool is not implemented."],
+["Can I save products for later?","A wishlist or save-for-later feature is not configured."],
+["Can I sort products by price?","Price sorting is not currently implemented. You can search and filter the collection by category."],
+["Can I buy more than one unit?","Yes. The local demo cart lets you increase item quantities using plus controls."],
+["Does the site calculate tax?","No. Taxes are not configured or calculated."],
+["Can I use a coupon code?","Coupon codes and discount calculations are not implemented."],
+["Does the site have mobile support?","The layout includes responsive styling for smaller screens."],
+["What should I ask the assistant?","Try asking about a product’s price or features, the cheapest item, categories, how to search, or how to change cart quantities."]
+],
+shop:[
+["Can I find a product by name?","Yes. Use the search box on the Shop page to filter by product name, description, or category."],
+["Can I search by a feature?","The search checks product names, descriptions, and categories. It does not index every feature field."],
+["Are products sorted by price?","The catalog does not currently offer a price-sort control."],
+["Can I see a product before adding it?","Yes. Select View item on its card to open the product detail page."],
+["Are all displayed prices in rupees?","Yes. Prices in this demo are displayed in Indian rupees (₹)."],
+["Can I add an item from the Shop page?","Open the item using View item, then select Add to cart on its detail page."],
+["Does a product being shown mean it is in stock?","No. Live stock information is not connected, so catalog display does not confirm availability."],
+["What is the price range?","The configured prices range from ₹799 to ₹4,499."],
+["How many Audio products are listed?","Two: Wireless Headphones at ₹2,999 and Bluetooth Speaker at ₹1,999."],
+["Which category has the most products?","Accessories has four configured products: Mechanical Keyboard, Ergonomic Wireless Mouse, 1080p Webcam, and USB-C Fast Charger."]
+],
+detail:[
+["Can I see this product’s price?","The product’s displayed price is shown near its name. Ask “What is its price?” for the configured amount."],
+["Can I add multiple units?","Yes. Use the plus control to increase the cart quantity."],
+["Will adding this product charge me?","No. Add to cart only changes the local demo cart; no payment is taken."],
+["Can you confirm delivery time for this item?","No. Delivery dates and shipping information are not configured."],
+["Can you confirm compatibility?","Only the features listed on this page are available. Device-specific compatibility is not configured."],
+["Does this product have a warranty?","Warranty information is not configured in this demo."],
+["Can I return this item?","Return and refund policies are not configured."],
+["Can I compare this with another item?","Use Back to shop to open another product. An automated comparison feature is not available."],
+["Can I change the quantity here?","Yes. Use the plus and minus controls in the quantity section."],
+["What happens when I select Go to cart?","The site opens Cart & Checkout, where you can review the local cart and quantities."]
+],
+cart:[
+["How is the subtotal calculated?","The subtotal is the sum of each configured item price multiplied by its cart quantity. Shipping and taxes are excluded."],
+["Are shipping costs included?","No. Shipping is not configured or calculated."],
+["Are taxes included in the total?","No. Tax calculation is not configured."],
+["Can I remove one item?","Select Remove next to that product, or reduce its quantity to zero."],
+["Can I continue shopping?","Yes. Select Continue shopping or use Shop in the navigation."],
+["Does demo checkout submit my order?","No. The form only displays a demo confirmation; it does not create or submit an order."],
+["Should I enter real payment information?","No. The checkout is illustrative and does not have payment processing. Do not enter real personal or payment information."],
+["Can I apply a discount?","Discounts and coupon codes are not implemented."],
+["What if my cart is empty?","Browse the Shop page, open a product, and select Add to cart."],
+["Will my cart persist after refreshing?","Cart persistence across reloads or sessions is not configured; treat it as temporary page state."]
+]
+};
+
+function findAnswer(q){
+ const ctx=currentContext(), n=normalize(q);
+ if(/\b(hello|hi|hey|good morning|good afternoon)\b/.test(n))return "Hello! I’m the ShopEase demo assistant. Ask me about listed products, prices, features, categories, the cart, or how to use this demo.";
+ if(n.includes("current page")||n.includes("which page")||n.includes("where am i"))return "You are on: "+ctx.name+".";
+ if(n.includes("how many products")||n.includes("number of products")||n.includes("products are there"))return "The configured ShopEase demo collection contains "+products.length+" products.";
+ if(n.includes("real order")||n.includes("place an order")||n.includes("payment")||n.includes("checkout real"))return "No real order or payment can be completed. Checkout is illustrative only; this demo does not submit orders, collect payment details, or send information to a merchant.";
+ if(n.includes("delivery")||n.includes("shipping")||n.includes("dispatch"))return "Shipping methods, delivery dates, and shipping charges are not configured in this demo, so I can’t confirm them.";
+ if(n.includes("return")||n.includes("refund")||n.includes("warranty")||n.includes("exchange"))return "Return, refund, exchange, and warranty policies are not configured in this demo.";
+ if(n.includes("stock")||n.includes("inventory"))return "Live inventory and stock status are not configured. A product appearing in the catalog does not confirm that it is currently in stock.";
+ if(n.includes("contact")||n.includes("customer care")||n.includes("support number")||n.includes("email address"))return "A customer-support phone number, email address, and contact form are not configured in this demo.";
+ if(n.includes("account")||n.includes("sign in")||n.includes("login")||n.includes("register"))return "Customer accounts, sign-in, and registration are not implemented in this demonstration storefront.";
+
+ let mentioned=products.find(p=>n.includes(normalize(p.name)));
+ const aliases=[
+  ["headphones",["headphone","headphones","earphone","earphones","headset"]],
+  ["watch",["watch","wearable","smartwatch","smart watch"]],
+  ["speaker",["speaker","speakers"]],
+  ["keyboard",["keyboard","typing"]],
+  ["mouse",["mouse","mice"]],
+  ["backpack",["backpack","bag","laptop bag"]],
+  ["bottle",["bottle","water bottle"]],
+  ["lamp",["lamp","desk light","light"]],
+  ["camera",["webcam","camera","video call"]],
+  ["charger",["charger","charging adapter","usb c charger","usb-c charger"]]
+ ];
+ if(!mentioned){for(const [id,terms] of aliases){if(terms.some(t=>n.includes(normalize(t)))){mentioned=getProduct(id);break;}}}
+ if(mentioned){
+  if(n.includes("price")||n.includes("cost")||n.includes("how much")||n.includes("cheapest")||n.includes("expensive"))return mentioned.name+" is listed at "+money(mentioned.price)+".";
+  if(n.includes("feature")||n.includes("spec")||n.includes("include")||n.includes("does it have")||n.includes("what can"))return "The listed features for "+mentioned.name+" are: "+mentioned.features.join("; ")+".";
+  if(n.includes("compatible")||n.includes("compatibility")||n.includes("work with"))return "The demo lists these features for "+mentioned.name+": "+mentioned.features.join("; ")+". Further device-specific compatibility information is not configured, so I can’t confirm it.";
+  if(n.includes("add")||n.includes("cart")||n.includes("buy"))return "To add "+mentioned.name+" to your demo cart, open its product details and select Add to cart. No purchase will be made.";
+  return mentioned.name+" is listed at "+money(mentioned.price)+". "+mentioned.desc+" "+mentioned.details+" Listed features: "+mentioned.features.join("; ")+".";
+ }
+ if(n.includes("cheapest")||n.includes("lowest price")){const p=[...products].sort((x,y)=>x.price-y.price)[0];return p.name+" is the lowest-priced configured product at "+money(p.price)+".";}
+ if(n.includes("most expensive")||n.includes("highest price")){const p=[...products].sort((x,y)=>y.price-x.price)[0];return p.name+" is the highest-priced configured product at "+money(p.price)+".";}
+ if(n.includes("audio"))return products.filter(p=>p.category==="Audio").map(p=>p.name+" ("+money(p.price)+")").join(" and ")+".";
+ if(n.includes("categories")||n.includes("category"))return "The configured categories are: "+[...new Set(products.map(p=>p.category))].join(", ")+".";
+ if(n.includes("search")&&n.includes("product"))return "On the Shop page, enter a product name, description keyword, or category in the search field. The list filters as you type.";
+ if(n.includes("filter"))return "On the Shop page, choose a category chip. Select All to display the full catalog.";
+ if(n.includes("add")&&n.includes("cart"))return "Open a product’s detail page and select Add to cart. You can then adjust its quantity using the plus and minus controls.";
+ if(n.includes("remove")&&n.includes("cart"))return "In Cart & Checkout, use Remove beside the item, or decrease its quantity with the minus control until it reaches zero.";
+ if(n.includes("quantity")||n.includes("change amount"))return "Use the plus and minus controls beside an item on its product page or in Cart & Checkout. A quantity of zero removes the item.";
+ if(n.includes("cart")&&(n.includes("total")||n.includes("subtotal")))return "Your cart has "+cartQty()+" item(s), with an item subtotal of "+money(cartTotal())+". Shipping and taxes are not calculated.";
+ if(n.includes("cart")||n.includes("empty"))return cartQty()?"Your cart contains "+cartQty()+" item(s). Its item subtotal is "+money(cartTotal())+".":"Your cart is currently empty. Browse Shop and use a product’s Add to cart control.";
+ if(n.includes("how do i")||n.includes("how to")||n.includes("where can i"))return "Browse the Shop page, select View item to inspect a product, and use Add to cart to add it to your demo cart. The header navigation moves between Home, Shop, Product Details, and Cart & Checkout.";
+ if(n.includes("why")||n.includes("not working")||n.includes("doesn't work")||n.includes("does not work"))return "This is a front-end demonstration. Product browsing and cart interactions work locally, but backend services such as live stock, accounts, order submission, payments, shipping, and returns are not connected.";
+ const bank=[...(questions[ctx.topic]||[]),...(supplementalQuestions[ctx.topic]||[])];
+ let best=null,bestScore=0;
+ for(const [question,answer] of bank){const sc=scoreQuestion(q,question);if(sc>bestScore){bestScore=sc;best=answer;}}
+ if(best&&bestScore>=25)return best;
+ return "I can answer questions about the configured catalog, prices, listed features, categories, page navigation, and demo-cart actions. I can’t confirm information that isn’t present here—such as live stock, shipping, delivery dates, returns, warranties, device compatibility, or payment processing—and I won’t guess. Try asking “What is the price of the USB-C Fast Charger?” or “How do I add a product to my cart?”";
+}
+function addMessage(text,who){const d=document.createElement("div");d.className="message "+who;d.textContent=text;document.getElementById("messages").appendChild(d);document.getElementById("messages").scrollTop=99999;}
+function send(e){if(e)e.preventDefault();const input=document.getElementById("chatInput"),q=input.value.trim();if(!q)return;input.value="";addMessage(q,"user");setTimeout(()=>addMessage(findAnswer(q),"bot"),100);}
+function askSuggested(q){document.getElementById("chatInput").value=q;send();}
+function setContext(reset){
+ const c=currentContext();document.getElementById("contextLabel").textContent="Context: "+c.name;
+ const picks={
+ home:["What can I do on this website?","How many products are available?","How do I find the cheapest item?","Can I place a real order?","Are delivery dates available?"],
+ shop:["Which product is cheapest?","What audio products are available?","Do you have a USB-C charger?","How do I add a product?","Can I check live stock?"],
+ detail:["What are its features?","What is its price?","Tell me about this product","How do I add it to my cart?","Is it in stock?"],
+ cart:["What is my cart total?","How do I change a quantity?","How do I remove an item?","Can I checkout?"]
+ };
+ document.getElementById("quick").innerHTML=picks[c.topic].map(q=>`<button type="button" data-question="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join("");
+ if(reset){document.getElementById("messages").innerHTML="";addMessage("You’re viewing "+c.name+". I’ll answer using the information configured for this page and identify anything the demo does not specify.","bot");}
+}
+document.getElementById("quick").addEventListener("click",function(event){
+ const button=event.target.closest("button[data-question]");
+ if(!button)return;
+ askSuggested(button.getAttribute("data-question"));
+});
+function toggleChat(){chatCollapsed=!chatCollapsed;document.getElementById("chat").classList.toggle("collapsed",chatCollapsed);document.querySelector(".chat-toggle").textContent=chatCollapsed?"+":"−";}
+render();setContext(true);
+</script>
+</body>
+</html>
